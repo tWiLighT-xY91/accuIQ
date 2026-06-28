@@ -7,6 +7,10 @@ from sqlalchemy.orm import relationship
 from app.database.database import Base
 
 from app.models.mixins import TimestampMixin
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from app.models.document import Document
 
 
 class Course(Base, TimestampMixin):
@@ -32,8 +36,7 @@ class Course(Base, TimestampMixin):
 
     university: Mapped[str]
 
-    documents = relationship(
-        "Document",
+    documents: Mapped[list["Document"]] = relationship(
         back_populates="course",
         cascade="all, delete-orphan",
     )
