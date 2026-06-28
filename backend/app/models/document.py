@@ -9,7 +9,7 @@ from app.models.mixins import TimestampMixin
 
 if TYPE_CHECKING:
     from app.models.course import Course
-    #from app.models.occurrence import QuestionOccurrence
+    from app.models.occurrence import QuestionOccurrence
 
 
 class Document(Base, TimestampMixin):
@@ -78,7 +78,7 @@ class Document(Base, TimestampMixin):
         back_populates="documents",
     )
 
-    #occurrences: Mapped[list["QuestionOccurrence"]] = relationship(
-     #   back_populates="document",
-      #  cascade="all, delete-orphan",
-    #)
+    occurrences: Mapped[list["QuestionOccurrence"]] = relationship(
+        back_populates="document",
+        cascade="all, delete-orphan",
+    )
