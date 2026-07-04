@@ -1,10 +1,8 @@
 from fastapi import APIRouter
 
-from app.api.health import router as health_router
+from app.api.endpoints import course, document, question, occurrence
 
-router = APIRouter()
+api_router = APIRouter()
 
-router.include_router(
-    health_router,
-    tags=["Health"],
-)
+api_router.include_router(course.router)
+api_router.include_router(document.router)
