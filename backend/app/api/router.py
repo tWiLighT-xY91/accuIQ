@@ -6,3 +6,5 @@ api_router = APIRouter()
 
 api_router.include_router(course.router)
 api_router.include_router(document.router)
+api_router.include_router(question.router)
+api_router.include_router(occurrence.router)
