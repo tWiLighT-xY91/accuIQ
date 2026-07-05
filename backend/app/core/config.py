@@ -55,6 +55,19 @@ class Settings(BaseSettings):
             f"{self.POSTGRES_DB}"
         )
 
+    # --------------------------------------------------
+    # File Storage
+    # --------------------------------------------------
+
+    UPLOAD_DIR: str = "storage/uploads"
+    MAX_UPLOAD_SIZE_MB: int = 50
+    ALLOWED_FILE_TYPES: list[str] = [
+    "application/pdf",
+    "image/jpeg",
+    "image/png",
+    "image/jpg",
+]
+
 
 @lru_cache
 def get_settings() -> Settings:
