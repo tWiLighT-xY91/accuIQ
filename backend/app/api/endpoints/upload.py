@@ -9,7 +9,7 @@ from fastapi import (
     UploadFile,
 )
 from sqlalchemy.orm import Session
-
+from uuid import uuid4
 from app.api.deps import get_db
 
 from app.crud.document import create_document
@@ -62,7 +62,7 @@ async def upload_file(
             storage_uri=upload_result.storage_uri,
             mime_type=upload_result.mime_type,
             file_size=upload_result.file_size,
-            checksum="pending",
+            checksum=f"processing_{uuid4()}",
             document_type=document_type,
             exam_year=exam_year,
         ),
