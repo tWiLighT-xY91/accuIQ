@@ -1,0 +1,13 @@
+from enum import Enum
+
+
+class ProcessingStage(str, Enum):
+    QUEUED = "QUEUED"
+    PROCESSING = "PROCESSING"
+    OCR = "OCR"
+    EXTRACTION = "EXTRACTION"
+    NORMALIZATION = "NORMALIZATION"
+    DUPLICATE_CHECK = "DUPLICATE_CHECK"
+    ANALYTICS = "ANALYTICS"
+    COMPLETED = "COMPLETED"
+    FAILED = "FAILED"
