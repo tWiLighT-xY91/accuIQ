@@ -16,6 +16,7 @@ def generate_response(
                 "content": prompt,
             }
         ],
+        format = "json"
     )
 
     return response["message"]["content"]

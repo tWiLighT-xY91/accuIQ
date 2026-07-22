@@ -46,26 +46,31 @@ def main():
         print(f"Extracted {len(candidates)} candidates.")
 
         # Only test the first question for now
-        candidate = candidates[0]
+        for i, candidate in enumerate(candidates, start=1):
+            print("\n")
+            print("=" * 70)
+            print("RAW QUESTION")
+            print("=" * 70)
 
-        print("\n")
-        print("=" * 70)
-        print("RAW QUESTION")
-        print("=" * 70)
+            print(candidate.raw_text)
+            print("\nSending to Qwen...")
+            try:
 
-        print(candidate.raw_text)
+                structured = structure_question(candidate.raw_text)
 
-        print("\nSending to Qwen...")
+                print(structured)
+                print("\n")
+                print("=" * 70)
+                print("STRUCTURED OUTPUT")
+                print("=" * 70)
 
-        structured = structure_question(candidate.raw_text)
+            except Exception as e:
 
-        print("\n")
-        print("=" * 70)
-        print("STRUCTURED OUTPUT")
-        print("=" * 70)
+                print(f"\n❌ Candidate {i} failed")
 
-        print(structured.model_dump_json(indent=4))
+                print(e)
 
+                continue
     finally:
 
         db.close()
