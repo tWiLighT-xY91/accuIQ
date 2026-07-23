@@ -13,7 +13,7 @@ class StructuredQuestion(BaseModel):
 
     question_text: str
 
-    course_outcomes: list[str] = []
+    course_outcomes: list[str] | None = None
 
     question_type: str | None = None
     
