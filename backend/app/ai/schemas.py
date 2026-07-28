@@ -17,3 +17,6 @@ class StructuredQuestion(BaseModel):
 
     question_type: str | None = None
     
+
+class DocumentMetadataAI(BaseModel):
+    exam_year: int | None = None

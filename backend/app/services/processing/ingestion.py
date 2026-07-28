@@ -9,6 +9,7 @@ from app.schemas.occurrence import OccurrenceCreate
 
 from app.services.processing.decision import extract_document_text
 from app.services.processing.extractor import extract_candidates
+from app.services.processing.metadata import extract_document_metadata
 
 from app.services.processing.normalizer import (
     generate_question_hash,
@@ -25,6 +26,8 @@ def process_document_questions(
     print("Extracting document text...")
 
     text = extract_document_text(document.storage_uri)
+    
+    metadata = extract_document_metadata(text)
 
     print("Extracting question candidates...")
 
