@@ -218,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# teste_files
+backend/test_files/*.pdf
+backend/storage/uploads/*.pdf
