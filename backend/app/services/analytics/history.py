@@ -41,10 +41,7 @@ def get_question_history(
                 "years": [],
             }
 
-        if (
-            row.exam_year is not None
-            and row.exam_year not in history[row.id]["years"]
-        ):
+        if row.exam_year is not None and row.exam_year not in history[row.id]["years"]:
             history[row.id]["years"].append(row.exam_year)
 
     result = []
@@ -57,7 +54,7 @@ def get_question_history(
             QuestionHistoryRead(
                 question_id=question_id,
                 question_text=data["question_text"],
-                frequency=len(years),
+                year_count=len(years),
                 years=years,
             )
         )

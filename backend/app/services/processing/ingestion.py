@@ -28,6 +28,9 @@ def process_document_questions(
     text = extract_document_text(document.storage_uri)
     
     metadata = extract_document_metadata(text)
+    document.exam_year = metadata.exam_year
+    db.commit()
+    db.refresh(document)
 
     print("Extracting question candidates...")
 
@@ -61,6 +64,7 @@ def process_document_questions(
                 db,
                 question_create,
             )
+            inserted_questions += 1
 
         occurrence_create = OccurrenceCreate(
             question_id=question.id,
@@ -75,7 +79,6 @@ def process_document_questions(
             occurrence_create,
         )
 
-        inserted_questions += 1
         inserted_occurrences += 1
 
     return {

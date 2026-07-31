@@ -10,7 +10,7 @@ class QuestionFrequencyRead(BaseModel):
 class QuestionHistoryRead(BaseModel):
     question_id: int
     question_text: str
-    frequency: int
+    year_count: int
     years: list[int]
 
 
