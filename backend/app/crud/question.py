@@ -21,6 +21,20 @@ def create_question(
 
     return db_question
 
+def get_question_by_hash(
+    db: Session,
+    normalized_hash: str,
+) -> Question | None:
+
+    statement = (
+        select(Question)
+        .where(
+            Question.normalized_hash == normalized_hash
+        )
+    )
+
+    return db.scalar(statement)
+
 
 def get_question(
     db: Session,

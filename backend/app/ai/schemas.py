@@ -1,5 +1,5 @@
 from pydantic import BaseModel
-
+from pydantic import field_validator
 
 class StructuredQuestion(BaseModel):
 
@@ -13,6 +13,10 @@ class StructuredQuestion(BaseModel):
 
     question_text: str
 
-    course_outcomes: list[str] = []
+    course_outcomes: list[str] | None = None
 
     question_type: str | None = None
+    
+
+class DocumentMetadataAI(BaseModel):
+    exam_year: int | None = None

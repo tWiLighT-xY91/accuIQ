@@ -2,12 +2,16 @@ import re
 
 from app.services.processing.models import QuestionCandidate
 
-
 QUESTION_PATTERNS = [
     r"^Question\s+\d+",
     r"^Q\.?\s*\d+",
-    r"^\d+\.",
-    r"^\d+\)",
+    r"^\d+\s*\.",
+    r"^\d+\s*\)",
+]
+
+END_PATTERNS = [
+    r"^Course Outcomes",
+    r"^CO1\s*:",
 ]
 
 
@@ -38,11 +42,7 @@ def split_into_lines(text: str) -> list[str]:
     Splits text into clean non-empty lines.
     """
 
-    return [
-        line.strip()
-        for line in text.splitlines()
-        if line.strip()
-    ]
+    return [line.strip() for line in text.splitlines() if line.strip()]
 
 
 def is_question_start(line: str) -> bool:

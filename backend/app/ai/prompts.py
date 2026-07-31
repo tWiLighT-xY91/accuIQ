@@ -33,3 +33,19 @@ Raw Question:
 
 {question}
 """
+
+DOCUMENT_METADATA_PROMPT = """
+Extract ONLY the exam year.
+
+Return JSON only.
+
+{
+    "exam_year": 2024
+}
+
+If unavailable:
+
+{
+    "exam_year": null
+}
+"""
